@@ -6,7 +6,6 @@ import store from './store'
 import BMap from 'bmap'
 import Element from 'element-ui'
 import './element-variables.scss'
-Vue.use(Element)
 Vue.use(BMap)
 Vue.config.productionTip = false
 new Vue({
