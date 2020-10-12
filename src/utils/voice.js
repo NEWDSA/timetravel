@@ -1,5 +1,13 @@
-const synth = window.speechSynthesis // 语音合成
+const synth = window.speechSynthesis  // 语音合成
 const msg = new SpeechSynthesisUtterance() // 语音合成
+data = [{
+  time: "08:00:00",
+  note: "早上好",
+  check: "2"
+}]
+var data
+localStorage.getItem("hou") == null ? localStorage.setItem("hou", JSON.stringify(data)) : data = JSON.parse(localStorage.hou);
+
 /**
  * 
  * @param {text}} text 
@@ -16,35 +24,27 @@ function handleSpeak(text) {
  * 停止语音
  */
 
- function handleStop(e){
-     msg.text=e
-     msg.lang='zh-CN'
-     synth.cancel(msg)
- }
-
- /**
-  *  根据条件判断应该说的话
-  */
-function sayTo(time){
-    switch (time) {
-        case '08:00':
-          this.handleSpeak('早上好先生，现在是北京时间' + time)
-          break
-        case '12:00':
-          this.handleSpeak('现在该吃饭午饭了，现在是北京时间' + time)
-          break
-        case '17:16':
-          this.handleSpeak('现在该吃晚饭了，现在是北京时间' + time)
-          break
-        case '14:00':
-          this.handleSpeak('也许你该休息了,现在是北京时间' + time)
-        case '22:47':
-          this.handleSpeak('你该洗澡去了,现在是北京时间' + time)
-          break
-        case '24:00':
-          this.handleSpeak('现在该睡觉了，现在是北京时间' + time)
-          break
-      }
+function handleStop(e) {
+  msg.text = e
+  msg.lang = 'zh-CN'
+  synth.cancel(msg)
 }
 
-export {handleSpeak,handleStop,sayTo}
+/**
+ *  根据条件判断应该说的话
+ */
+function sayTo(time) {
+  data.forEach((item) => {
+
+    [item.check] == 1 ? [item.time] == time ? handleSpeak('现在是' + time) : '' : ''
+  })
+}
+
+function Waketime(time) {
+  sayTo(time)
+}
+export {
+  handleSpeak,
+  handleStop,
+  sayTo
+}

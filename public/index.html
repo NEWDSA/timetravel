@@ -7,33 +7,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
   <title><%= htmlWebpackPlugin.options.title %></title>
-  <script src="../src/js/annyang.js"></script>
-  <script>
-    if (annyang) {
-      const _this = this
-      var commands = {
-
-        'hey siri': function () {
-          _this.handleSpeak('你好,有什么可以帮到你的吗？')
-        }
-
-      }
-
-      var commands2 = {
-
-        'hey siri now time': function () {
-          _this.handleSpeak('现在是北京时间' + _this.date)
-        }
-
-      }
-
-      annyang.addCommands(commands)
-
-      annyang.addCommands(commands2)
-
-      annyang.start()
-    }
-  </script>
 </head>
 <body>
   <noscript>
