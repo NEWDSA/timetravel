@@ -1,18 +1,18 @@
-const synth = window.speechSynthesis  // 语音合成
+const synth = window.speechSynthesis // 语音合成
 const msg = new SpeechSynthesisUtterance() // 语音合成
 data = [{
-  time: "08:00:00",
-  note: "早上好",
-  check: "2"
+  time: '08:00:00',
+  note: '早上好',
+  check: '2'
 }]
 var data
-localStorage.getItem("hou") == null ? localStorage.setItem("hou", JSON.stringify(data)) : data = JSON.parse(localStorage.hou);
+localStorage.getItem('hou') == null ? localStorage.setItem('hou', JSON.stringify(data)) : data = JSON.parse(localStorage.hou)
 
 /**
- * 
- * @param {text}} text 
+ *
+ * @param {text}} text
  */
-function handleSpeak(text) {
+function handleSpeak (text) {
   msg.text = text // 文字内容: 小朋友，你是否有很多问号
   msg.lang = 'zh-CN' // 使用的语言:中文
   msg.volume = 1 // 声音音量：1
@@ -24,7 +24,7 @@ function handleSpeak(text) {
  * 停止语音
  */
 
-function handleStop(e) {
+function handleStop (e) {
   msg.text = e
   msg.lang = 'zh-CN'
   synth.cancel(msg)
@@ -33,14 +33,13 @@ function handleStop(e) {
 /**
  *  根据条件判断应该说的话
  */
-function sayTo(time) {
+function sayTo (time) {
   data.forEach((item) => {
-
     [item.check] == 1 ? [item.time] == time ? handleSpeak('现在是' + time) : '' : ''
   })
 }
 
-function Waketime(time) {
+function Waketime (time) {
   sayTo(time)
 }
 export {

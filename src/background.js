@@ -17,8 +17,9 @@ let win
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1080,
+    height: 850,
+    titleBarStyle:'customButtonsOnHover',
     frame: false,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
