@@ -114,16 +114,19 @@ export default {
       direction: "rtl",
       activeName: "second",
       formData: [],
-      formm: {},
-      wakeUp: {},
+      formm: {}
     };
   },
   mounted() {
-    var a = JSON.parse(localStorage.hou);
-    this.formData = JSON.parse(localStorage.hou);
-    a.forEach((item, index) => {
+    var a = localStorage.getItem('hou');
+    // this.formData = a
+    if(!a==undefined){
+      var bb=JSON.stringify(localStorage.getItem('hou'))
+      bb.forEach((item, index) => {
       this.formm[index] = item;
     });
+    }
+    
     const time = this.date.substring(0, 5);
 
     // this.timer = setInterval(() => {

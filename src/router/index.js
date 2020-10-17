@@ -2,7 +2,7 @@
  * @Author: luciano 
  * @Date: 2020-10-14 18:16:49 
  * @Last Modified by: luciano
- * @Last Modified time: 2020-10-16 01:48:41
+ * @Last Modified time: 2020-10-17 15:47:37
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/index',
     name: 'index',
     component: Index
   }, 
@@ -36,7 +36,7 @@ router.beforeEach((to,from,next)=>{
   if(to.path === '/login'){
     next();
   }else{
-    let token=localStorage.getItem('Authorization');
+    let token=sessionStorage.getItem('Authorization');
     if(token === null || token ===''){
       next('/login');
     }else{

@@ -25,7 +25,11 @@
         </el-form-item>
         <!-- 记住我 -->
         <el-form-item>
-          <el-checkbox label="记住我" class="rememberMe"></el-checkbox>
+          <el-checkbox
+            label="记住我"
+            class="rememberMe"
+            @click="rember"
+          ></el-checkbox>
         </el-form-item>
         <!-- 登录按钮 -->
         <el-form-item>
@@ -45,7 +49,7 @@ export default {
         username: undefined,
         password: undefined,
       },
-      userToken: "",
+      // userToken: "",
       rules: {
         username: [
           {
@@ -91,11 +95,27 @@ export default {
             this.userToken = "Bearer" + res.data[0].username;
             // 将用户token保存到vuex中
             this.changeLogin({ Authorization: this.userToken });
-            this.$router.push("/");
+            this.$router.push("/index").catch((er) => {
+              console.log(er);
+            });
           })
           .catch((er) => {
+            console.log(er)
             this.$message("登录失败");
           });
+      });
+    },
+    rember() {
+      getLogin(this.formData).then((res) => {
+        // const resp = res.data
+        console.log(res.data[0].username);
+        this.userToken = "Bearer" + res.data[0].username;
+        // 将用户token保存到vuex中
+        this.saveLogin({ lAuthorization: this.userToken });
+        this.$router.push("/index").catch((er) => {
+          console.log(er);
+        });
+        // location.reload()
       });
     },
   },
