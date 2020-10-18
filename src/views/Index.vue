@@ -100,11 +100,6 @@
   </div>
 </template>
 <script>
-// import {
-//   handleSpeak,
-//   sayTo
-// } from "../utils/voice";
-
 import Lunbo from "../components/lunbo";
 export default {
   data() {
@@ -114,27 +109,20 @@ export default {
       direction: "rtl",
       activeName: "second",
       formData: [],
-      formm: {}
+      formm: {},
     };
   },
   mounted() {
-    var a = localStorage.getItem('hou');
-    // this.formData = a
-    if(!a==undefined){
-      var bb=JSON.stringify(localStorage.getItem('hou'))
+    var a = localStorage.getItem("hou");
+    this.formData = JSON.parse(localStorage.hou);
+    if (!a == undefined) {
+      var bb = JSON.stringify(localStorage.getItem("hou"));
       bb.forEach((item, index) => {
-      this.formm[index] = item;
-    });
+        this.formm[index] = item;
+      });
     }
-    
-    const time = this.date.substring(0, 5);
 
-    // this.timer = setInterval(() => {
-    //   this.date = new Date()
-    //   this.date = this.date.toLocaleTimeString('en-GB')
-    //   const time = this.date.substring(0, 5)
-    //   // sayTo(time);
-    // }, 1000)
+    const time = this.date.substring(0, 5);
   },
   methods: {
     handleClose(done) {
@@ -156,7 +144,7 @@ export default {
     },
     handlecheckCell(index) {
       localStorage.setItem("hou", JSON.stringify(this.formData));
-      location.reload();
+      // location.reload();
     },
   },
   components: {
@@ -176,9 +164,6 @@ export default {
     transform: translate(-50%, -50%);
     font-size: 20rem;
     color: rgba(255, 255, 255, 0.2);
-    // color: pink;
-    // -webkit-animation: 4s linear 0s infinite alternate dcontent;
-    // animation: 4s linear 0s infinite alternate dcontent;
     z-index: 11;
     cursor: pointer;
     user-select: none;
@@ -194,7 +179,7 @@ export default {
     height: 100%;
   }
   .is-selected {
-    color: #1989FA;
+    color: #1989fa;
   }
   @-webkit-keyframes dcontent {
     from {
@@ -254,8 +239,8 @@ export default {
     padding: 15px;
     height: 80rem;
     @media screen and (max-width: 1080px) {
-    height: 700px;
-  }
+      height: 700px;
+    }
     background-color: rgba(255, 255, 255, 0.2);
     overflow-y: scroll;
   }

@@ -19,7 +19,7 @@ export default new Vuex.Store({
     },
     saveLogin(state,user){
 
-      state.lAuthorization=user
+      state.lAuthorization=user.lAuthorization
       localStorage.setItem('Authorization',user)
 
     },

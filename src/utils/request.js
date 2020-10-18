@@ -1,7 +1,7 @@
 import axios from 'axios'
 const request = axios.create({
 
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL: 'http://127.0.0.1:8000',
   timeout: 5000 // 请求超时,5000毫秒
 
   

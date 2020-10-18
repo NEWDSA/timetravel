@@ -3,7 +3,8 @@ import { app, protocol, BrowserWindow,ipcMain} from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
-
+protocol.registerSchemesAsPrivileged([{scheme: 'app', privileges: { secure: true, standard: true } }])
+app.commandLine.appendSwitch('disable-web-security');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
@@ -25,6 +26,7 @@ function createWindow () {
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       // nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION
       nodeIntegration: true,
+      webSecurity:false
     }
     
   })
@@ -50,6 +52,7 @@ function createWindow () {
 ipcMain.on('window-min',function(){ // 收到渲染进程的窗口最小化操作的通知，并调用窗口最小化函数，执行该操作
   win.minimize();
 })
+
 /**
  * 窗口 最大化
  */
@@ -67,6 +70,13 @@ ipcMain.on('window-max',function(){
 ipcMain.on('window-close',function(){
   win.close()
 })
+/**
+ * 登录
+ */
+// ipcMain.on('login',function(e){
+//   alert(e)
+//   win.loadURL('http://127.0.0.1:8000/login')
+// })
 /**
  * 拖拽窗体
  */

@@ -2,7 +2,7 @@
  * @Author: luciano 
  * @Date: 2020-10-14 18:16:49 
  * @Last Modified by: luciano
- * @Last Modified time: 2020-10-17 15:47:37
+ * @Last Modified time: 2020-10-18 17:06:59
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -42,6 +42,7 @@ router.beforeEach((to,from,next)=>{
     }else{
       next();
     }
+    next();
   }
 })
 

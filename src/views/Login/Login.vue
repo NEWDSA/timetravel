@@ -69,7 +69,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["changeLogin"]),
+    ...mapMutations(['changeLogin']),
     submitForm() {
       this.$refs["elForm"].validate((valid) => {
         if (!valid) return;
@@ -78,31 +78,24 @@ export default {
           username: this.formData.username,
           password: this.formData.password,
         };
-        // getLogin(params).then(res=>{
-        //   console.log(res)
-        //   this.userToken=res.data[0].username
-        //   this.storeLogin({Authorization:this.userToken})
-        //   this.$router.push('/')
-        // }).catch(err=>{
-        //     //Element-ui 弹窗
-        //     this.$message('登录失败');
-        // })
-
-        getLogin(this.formData)
-          .then((res) => {
-            // const resp = res.data
-            console.log(res.data[0].username);
-            this.userToken = "Bearer" + res.data[0].username;
-            // 将用户token保存到vuex中
-            this.changeLogin({ Authorization: this.userToken });
-            this.$router.push("/index").catch((er) => {
-              console.log(er);
-            });
-          })
-          .catch((er) => {
-            console.log(er)
-            this.$message("登录失败");
-          });
+        getLogin(params).then(res=>{
+          console.log(res)
+          this.userToken=res.data[0].username
+          this.changeLogin({Authorization:this.userToken})
+          this.$router.push('/index')
+        }).catch(err=>{
+            //Element-ui 弹窗
+            console.log(err)
+            this.$message('登录失败');
+        })
+        // if(params.username=='Luciano' & params.password=='123'){
+        //   this.$message('登录成功')
+        //   this.$route.push('/')
+        // }else{
+        //   this.$message(
+        //     '登录失败'
+        //   )
+        // }
       });
     },
     rember() {
