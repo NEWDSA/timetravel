@@ -1,7 +1,6 @@
 
 <template>
   <div class="login_container">
-    <div class="hea">贾维斯系统</div>
     <div class="login_box">
       <!-- 登录表单区域 -->
       <el-form ref="elForm" :rules="rules" :model="formData" size="medium">
@@ -88,14 +87,6 @@ export default {
             console.log(err)
             this.$message('登录失败');
         })
-        // if(params.username=='Luciano' & params.password=='123'){
-        //   this.$message('登录成功')
-        //   this.$route.push('/')
-        // }else{
-        //   this.$message(
-        //     '登录失败'
-        //   )
-        // }
       });
     },
     rember() {
@@ -121,14 +112,6 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-}
-.hea {
-  background: #000;
-  font-size: 3rem;
-  // height: 3rem;
-  @media screen and (max-width: 1080px) {
-    font-size: 30px;
-  }
 }
 .login_box {
   width: 40rem;

@@ -96,8 +96,8 @@ export default {
   computed: {
     showor() {
       if (this.$route.path == "/index") {
-      this.user = true;
-      return this.user
+        this.user = true;
+        return this.user;
       }
     },
   },
@@ -110,11 +110,11 @@ export default {
   align-items: center;
   position: absolute;
   width: 100%;
-  height: 30px;
-  //   background: red;
   z-index: 12;
   height: 3rem;
   line-height: 3rem;
+  color: red;
+  background: burlywood;
   .content {
     // background-color: pink;
     font-size: 20px;
