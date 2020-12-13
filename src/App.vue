@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <Header></Header>
-    <canvas class="canvas"></canvas>
+    <!-- <canvas class="canvas"></canvas> -->
     <!-- 添加过渡动效 -->
     <transition>
-      <router-view class="view" v-show="show" />
+      <router-view class="view" />
     </transition>
   </div>
 </template>
@@ -39,7 +39,7 @@ body,
 }
 </style>
 <script>
-import { printColor } from "@/utils/screenAni";
+// import { printColor } from "@/utils/screenAni";
 import { mapMutations } from "vuex";
 import Header from "./components/header"; //引入头部组件
 
@@ -51,24 +51,24 @@ export default {
   },
   mounted() {
 
-    this.myShow()
-    setTimeout(() => {
-      printColor($("canvas"));
-      setTimeout(()=>{
-        this.myCShow()
-      },6000)
-    }, 1000);
+    // this.myShow()
+    // setTimeout(() => {
+    //   printColor($("canvas"));
+    //   setTimeout(()=>{
+    //     this.myCShow()
+    //   },6000)
+    // }, 1000);
   },
   methods: {
-    ...mapMutations(["changeShow"]),
-    myShow() {
-      this.changeShow({show:false})
-      this.show=this.$store.state.show
-    },
-    myCShow(){
-      this.changeShow({show:true})
-      this.show=this.$store.state.show
-    }
+    // ...mapMutations(["changeShow"]),
+    // myShow() {
+    //   this.changeShow({show:false})
+    //   this.show=this.$store.state.show
+    // },
+    // myCShow(){
+    //   this.changeShow({show:true})
+    //   this.show=this.$store.state.show
+    // }
   },
   components: {
     Header,

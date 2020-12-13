@@ -3,13 +3,13 @@
     <div class="lpanel">
       <el-col :span="12">
         <el-menu
-          default-active="2"
+          default-active="1"
           class="el-menu-vertical-demo"
           background-color="#545c64"
         >
           <el-menu-item index="1">
             <i class="el-icon-notebook-1"></i>
-            <span slot="title" @click="study">学习计划</span>
+            <span slot="title"  @click="study">学习计划</span>
           </el-menu-item>
           <el-menu-item index="2">
             <i class="el-icon-s-finance"></i>
@@ -26,7 +26,9 @@
         </el-menu>
       </el-col>
     </div>
-    <div class="lcont">1111</div>
+    <div class="lcont">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script>
@@ -41,6 +43,7 @@ export default {
   methods: {
     study(){
      //跳转路由到学习计划部分
+     console.log(this.$router.push({name:'study'}));
     },
     finat(){
       //跳转路由到消费金额
@@ -77,10 +80,12 @@ export default {
   }
   .lcont {
     position: absolute;
+    margin-top: 3rem;
     margin-left: 12.5rem;
     width: calc(100% - 12.5rem);
-    height: 100%;
+    height: calc(100% - 3rem);
     background: #ffff;
+    // border: 1px solid red;
   }
   // .is-selected {
   //   color: #1989fa;

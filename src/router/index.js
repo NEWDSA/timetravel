@@ -2,25 +2,34 @@
  * @Author: luciano 
  * @Date: 2020-10-14 18:16:49 
  * @Last Modified by: luciano
- * @Last Modified time: 2020-10-18 17:06:59
+ * @Last Modified time: 2020-11-15 10:35:49
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '@/views/Index.vue'
+import Index from '@/views/Index'
 import Login from '@/views/Login/Login'
+import Study from '@/views/study/study'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/index',
     name: 'index',
-    component: Index
+    component: Index,
+    children:[
+      {
+        path:'/study',
+        name:'study',
+        component:Study
+      }
+    ]
   }, 
   {
     path:'/login',
     name:'login', 
     component:Login
   }
+  
 ]
 
 
